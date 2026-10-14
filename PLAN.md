@@ -9,7 +9,8 @@ Alembic + Postgres/SQLite. Adds the patterns that were missing vs the JS demo:
 - [x] 1. Skeleton + domain — config, db, models (Payment/PaymentEvent/Refund), enums, schemas
 - [ ] 2. Gateway layer — PaymentGateway interface, MockGateway, RazorpayGateway, GatewayRouter (factory)
 - [ ] 3. Services + API — state machine, idempotency, refunds, HMAC verify, controllers, webhook, API-key auth, error handling, app factory
-- [ ] 4. Tests + README + Dockerfile -> remote build (HF Space, laptop-safe) -> push public repo -> portfolio/resumes
+- [x] 3. Services + API — state machine, idempotency, refunds, HMAC verify, controllers, webhook, API-key auth, error handling, app factory. Verified live locally (create/approve/refund/over-refund/auth/validation all pass; fixed SQLite naive-datetime vs tz-aware bug in expiry check).
+- [~] 4. README + Dockerfile DONE; pushed public -> github.com/dsremo/pay-service. REMAINING: optional live deploy to HF Docker Space (laptop-safe remote build, SQLite in-container); add to portfolio "Selected work" + resumes (Python/Backend bullet).
 
 ## Design notes
 - Async throughout (FastAPI + httpx). SQLite by default; Postgres via DATABASE_URL.
